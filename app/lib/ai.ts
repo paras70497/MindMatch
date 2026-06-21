@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 
 const client = new OpenAI({
   baseURL: 'https://openrouter.ai/api/v1',
-  apiKey: process.env.OPENROUTER_API_KEY || '',
+  apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY || 'missing_key_fallback',
   defaultHeaders: {
     'HTTP-Referer': 'https://mindmatch.app',
     'X-Title': 'MindMatch Compatibility App',
