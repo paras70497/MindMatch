@@ -1,0 +1,37 @@
+{
+  "name": "mindmatch-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx --env-file=.env.local server.ts",
+    "dev:next": "next dev",
+    "build": "next build",
+    "start": "NODE_ENV=production tsx --env-file=.env.local server.ts",
+    "lint": "eslint",
+    "seed": "tsx --env-file=.env.local scripts/seed-questions.ts"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.11.96",
+    "framer-motion": "^12.40.0",
+    "html2canvas": "^1.4.1",
+    "mongoose": "^9.7.1",
+    "nanoid": "^5.1.15",
+    "next": "16.2.9",
+    "openai": "^6.44.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4",
+    "tsx": "^4.22.4",
+    "typescript": "^5"
+  }
+}

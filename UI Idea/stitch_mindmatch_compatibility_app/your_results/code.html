@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MindMatch - Compatibility Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed-variant": "#005229",
+                        "surface-dim": "#111317",
+                        "on-tertiary-container": "#00743c",
+                        "tertiary": "#ffffff",
+                        "primary": "#ffffff",
+                        "inverse-primary": "#5d5f5f",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed-dim": "#60de8c",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#636565",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#b5b8c5",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-highest": "#333539",
+                        "primary-fixed": "#e2e2e2",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#434752",
+                        "on-background": "#e2e2e8",
+                        "tertiary-fixed": "#7efba6",
+                        "surface-tint": "#c6c6c7",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed": "#1a1c1c",
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#00391a",
+                        "on-error": "#690005",
+                        "surface-container": "#1e2024",
+                        "on-surface": "#e2e2e8",
+                        "secondary-fixed": "#dfe2f0",
+                        "on-secondary-fixed": "#171b25",
+                        "on-primary": "#2f3131",
+                        "surface-bright": "#37393e",
+                        "secondary": "#c3c6d4",
+                        "background": "#111317",
+                        "outline": "#8e9192",
+                        "on-secondary": "#2c303b",
+                        "surface-variant": "#333539",
+                        "secondary-container": "#454954",
+                        "tertiary-container": "#7efba6",
+                        "on-tertiary-fixed": "#00210d",
+                        "inverse-on-surface": "#2f3035",
+                        "primary-container": "#e2e2e2",
+                        "inverse-surface": "#e2e2e8",
+                        "surface": "#111317",
+                        "surface-container-high": "#282a2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "40px",
+                        "2xl": "64px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+        }
+        .premium-card {
+            background-color: theme('colors.surface');
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+        }
+        .premium-btn-primary {
+            background-color: theme('colors.primary');
+            color: theme('colors.on-primary');
+            box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.4);
+            border: 1px solid transparent;
+            transition: opacity 0.2s ease;
+        }
+        .premium-btn-primary:hover {
+            opacity: 0.9;
+        }
+        .premium-btn-secondary {
+            background-color: transparent;
+            color: theme('colors.primary');
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background-color 0.2s ease;
+        }
+        .premium-btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .circular-progress {
+            stroke-dasharray: 283; /* 2 * pi * r (approx 45) */
+            stroke-dashoffset: 283;
+            animation: fillProgress 1.5s ease-out forwards;
+        }
+        @keyframes fillProgress {
+            to { stroke-dashoffset: 31.13; } /* 283 - (283 * 0.89) */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-lg antialiased selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar Shared Component -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 border-b border-white/10 fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<span class="font-display text-headline-md tracking-tighter text-on-surface dark:text-on-surface">MindMatch</span>
+<nav class="hidden md:flex gap-lg">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">How it Works</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary font-bold border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-300" href="#">Compatibility</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#">Scientific Method</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="font-label-md text-label-md premium-btn-secondary px-md py-sm rounded">Join Room</button>
+<button class="font-label-md text-label-md premium-btn-primary px-md py-sm rounded">Create Room</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-2xl mt-xl px-md md:px-lg max-w-container-max mx-auto w-full pb-2xl flex flex-col gap-xl">
+<!-- Header Section -->
+<section class="text-center mt-xl mb-md">
+<p class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-sm">Analysis Complete</p>
+<h1 class="font-display text-display text-on-surface">Compatibility Results</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-sm max-w-2xl mx-auto">We've cross-referenced psychological profiles, values, and behavioral markers.</p>
+</section>
+<!-- Main Dashboard Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Core Score -->
+<div class="col-span-1 lg:col-span-5 premium-card rounded-xl p-lg flex flex-col items-center justify-center min-h-[400px]">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xl">Match Score</h2>
+<div class="relative w-64 h-64 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="rgba(255,255,255,0.05)" stroke-width="2"></circle>
+<circle class="circular-progress" cx="50" cy="50" fill="none" r="45" stroke="#ffffff" stroke-linecap="round" stroke-width="2"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display text-[64px] font-bold leading-none tracking-tighter text-on-surface">89<span class="text-headline-md">%</span></span>
+<span class="font-label-caps text-label-caps text-tertiary-fixed-dim mt-xs uppercase">Highly Compatible</span>
+</div>
+</div>
+</div>
+<!-- Detailed Breakdown -->
+<div class="col-span-1 lg:col-span-7 flex flex-col gap-gutter">
+<!-- Highlights -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="premium-card rounded-xl p-md flex flex-col">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Biggest Similarity</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Future Goals</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Aligned trajectories for career and personal development.</p>
+</div>
+<div class="premium-card rounded-xl p-md flex flex-col">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Biggest Difference</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Social Battery</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Contrasting energy recovery needs (introversion vs extroversion).</p>
+</div>
+</div>
+<!-- Breakdown Bars -->
+<div class="premium-card rounded-xl p-lg flex-grow flex flex-col justify-center">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Psychological Axes</h3>
+<div class="flex flex-col gap-md">
+<!-- Item -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-on-surface">Values &amp; Ethics</span>
+<span class="text-on-surface">94%</span>
+</div>
+<div class="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 94%;"></div>
+</div>
+</div>
+<!-- Item -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-on-surface">Lifestyle Pace</span>
+<span class="text-on-surface">82%</span>
+</div>
+<div class="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+<!-- Item -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-on-surface">Communication Style</span>
+<span class="text-on-surface">88%</span>
+</div>
+<div class="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+<!-- Item -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-xs">
+<span class="text-on-surface">Personality Traits</span>
+<span class="text-on-surface">75%</span>
+</div>
+<div class="h-[2px] w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary/70 rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Badges & CTA -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mt-sm">
+<div class="col-span-1 md:col-span-8 premium-card rounded-xl p-md flex items-center gap-lg overflow-x-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase whitespace-nowrap">Achievements</span>
+<div class="flex gap-md">
+<div class="flex items-center gap-sm bg-white/5 border border-white/10 rounded-full px-md py-sm">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[18px]">psychology</span>
+<span class="font-label-md text-label-md text-on-surface">Mind Readers</span>
+</div>
+<div class="flex items-center gap-sm bg-white/5 border border-white/10 rounded-full px-md py-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">neurology</span>
+<span class="font-label-md text-label-md text-on-surface">Same Brain</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex items-center justify-end">
+<button class="w-full md:w-auto font-label-md text-label-md premium-btn-primary px-xl py-md rounded-lg flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+                    Share Results
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5 w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-lg max-w-container-max mx-auto mt-auto">
+<span class="font-display text-headline-md text-on-surface">MindMatch</span>
+<div class="flex flex-wrap gap-md items-center justify-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Research Documentation</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100 uppercase" href="#">Contact Support</a>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant opacity-80 hover:opacity-100">© 2024 MindMatch. Psychological precision in every connection.</span>
+</footer>
+</body></html>

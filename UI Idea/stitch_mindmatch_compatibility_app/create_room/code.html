@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MindMatch - Create Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#444748",
+                        "on-tertiary-fixed-variant": "#005229",
+                        "surface-dim": "#111317",
+                        "on-tertiary-container": "#00743c",
+                        "tertiary": "#ffffff",
+                        "primary": "#ffffff",
+                        "inverse-primary": "#5d5f5f",
+                        "on-surface-variant": "#c4c7c8",
+                        "tertiary-fixed-dim": "#60de8c",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-container": "#636565",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#b5b8c5",
+                        "surface-container-lowest": "#0c0e12",
+                        "surface-container-low": "#1a1c20",
+                        "on-primary-fixed-variant": "#454747",
+                        "surface-container-highest": "#333539",
+                        "primary-fixed": "#e2e2e2",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#434752",
+                        "on-background": "#e2e2e8",
+                        "tertiary-fixed": "#7efba6",
+                        "surface-tint": "#c6c6c7",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed": "#1a1c1c",
+                        "secondary-fixed-dim": "#c3c6d4",
+                        "on-tertiary": "#00391a",
+                        "on-error": "#690005",
+                        "surface-container": "#1e2024",
+                        "on-surface": "#e2e2e8",
+                        "secondary-fixed": "#dfe2f0",
+                        "on-secondary-fixed": "#171b25",
+                        "on-primary": "#2f3131",
+                        "surface-bright": "#37393e",
+                        "secondary": "#c3c6d4",
+                        "background": "#111317",
+                        "outline": "#8e9192",
+                        "on-secondary": "#2c303b",
+                        "surface-variant": "#333539",
+                        "secondary-container": "#454954",
+                        "tertiary-container": "#7efba6",
+                        "on-tertiary-fixed": "#00210d",
+                        "inverse-on-surface": "#2f3035",
+                        "primary-container": "#e2e2e2",
+                        "inverse-surface": "#e2e2e8",
+                        "surface": "#111317",
+                        "surface-container-high": "#282a2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "40px",
+                        "2xl": "64px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "600" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Premium custom styling hints */
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        /* Custom Toggle Switch styling using Peer */
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #ffffff; /* primary */
+        }
+        .toggle-checkbox:checked + .toggle-label::after {
+            transform: translateX(100%);
+            border-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-lg antialiased selection:bg-primary/20 selection:text-primary">
+<!-- TopNavBar Component -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 border-b border-white/10 fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-xl">
+<a class="font-display text-headline-md tracking-tighter text-on-surface dark:text-on-surface flex items-center gap-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychiatry</span>
+                MindMatch
+            </a>
+<nav class="hidden md:flex items-center gap-lg">
+<!-- Transactional Screen: Nav links present but inactive as per strict JSON transcription, but intent says we are deep in a flow. -->
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="#">How it Works</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="#">Compatibility</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors duration-300" href="#">Scientific Method</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden md:block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-300 border border-white/10 rounded-full px-md py-sm hover:bg-white/5">
+                Join Room
+            </button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-full scale-95 duration-200 ease-in-out hover:opacity-90 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
+                Create Room
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-center pt-32 pb-2xl px-md md:px-gutter w-full max-w-3xl mx-auto">
+<!-- Page Header -->
+<div class="text-center mb-xl w-full">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Room Configuration</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto">Fine-tune the parameters for your session to ensure psychological precision and optimal compatibility tracking.</p>
+</div>
+<!-- Configuration Card (Bento-inspired single column for focus) -->
+<div class="w-full bg-surface-container-low glass-panel rounded-xl p-lg md:p-xl flex flex-col gap-xl">
+<!-- Section: Number of Questions -->
+<section class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">format_list_numbered</span>
+                        Depth of Assessment
+                    </h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant px-sm py-xs border border-white/10 rounded">QUESTIONS</span>
+</div>
+<div class="grid grid-cols-3 gap-md p-xs bg-surface-dim rounded-lg border border-white/5">
+<button class="py-md rounded-md border border-white/10 text-on-surface-variant font-label-md text-label-md hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center justify-center gap-xs">
+<span class="font-headline-md text-headline-md">10</span>
+<span class="text-[10px] opacity-70">Surface</span>
+</button>
+<!-- Active State Example -->
+<button class="py-md rounded-md bg-primary text-on-primary font-label-md text-label-md shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center justify-center gap-xs">
+<span class="font-headline-md text-headline-md">20</span>
+<span class="text-[10px] opacity-90">Standard</span>
+</button>
+<button class="py-md rounded-md border border-white/10 text-on-surface-variant font-label-md text-label-md hover:bg-white/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 flex flex-col items-center justify-center gap-xs">
+<span class="font-headline-md text-headline-md">50</span>
+<span class="text-[10px] opacity-70">Deep Dive</span>
+</button>
+</div>
+</section>
+<hr class="border-white/5"/>
+<!-- Section: Categories -->
+<section class="flex flex-col gap-md">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">category</span>
+                        Psychological Domains
+                    </h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant px-sm py-xs border border-white/10 rounded">CATEGORIES</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">Select the core areas to evaluate during this session.</p>
+<div class="flex flex-wrap gap-sm">
+<!-- Chip Active -->
+<button class="px-md py-sm rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-xs border border-primary transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] hover:opacity-90">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+                        Values
+                    </button>
+<!-- Chip Active -->
+<button class="px-md py-sm rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-xs border border-primary transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] hover:opacity-90">
+<span class="material-symbols-outlined text-[16px]">home</span>
+                        Lifestyle
+                    </button>
+<!-- Chip Inactive -->
+<button class="px-md py-sm rounded-full bg-surface-dim text-on-surface-variant font-label-md text-label-md flex items-center gap-xs border border-white/10 hover:border-white/30 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+                        Habits
+                    </button>
+<!-- Chip Active -->
+<button class="px-md py-sm rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-xs border border-primary transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] hover:opacity-90">
+<span class="material-symbols-outlined text-[16px]">explore</span>
+                        Future
+                    </button>
+<!-- Chip Inactive -->
+<button class="px-md py-sm rounded-full bg-surface-dim text-on-surface-variant font-label-md text-label-md flex items-center gap-xs border border-white/10 hover:border-white/30 hover:text-on-surface transition-all">
+<span class="material-symbols-outlined text-[16px]">celebration</span>
+                        Fun
+                    </button>
+</div>
+</section>
+<hr class="border-white/5"/>
+<!-- Section: Modifiers (Toggles) -->
+<section class="flex flex-col gap-lg">
+<!-- Prediction Mode Toggle -->
+<div class="flex items-start justify-between group">
+<div class="flex flex-col gap-xs pr-md">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">psychology</span>
+                            Prediction Mode
+                        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Enable AI-driven sentiment forecasting before results are revealed.</p>
+</div>
+<div class="relative inline-block w-12 h-6 align-middle select-none mt-1">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface border-2 border-outline-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 peer" id="prediction_mode" name="prediction_mode" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer border border-white/10 transition-colors duration-200 ease-in-out" for="prediction_mode"></label>
+</div>
+</div>
+<!-- Timer Mode Toggle -->
+<div class="flex items-start justify-between group">
+<div class="flex flex-col gap-xs pr-md">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">timer</span>
+                            Timer Mode
+                        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Apply a 30-second strict limit per question to capture instinctual responses.</p>
+</div>
+<div class="relative inline-block w-12 h-6 align-middle select-none mt-1">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface border-2 border-outline-variant appearance-none cursor-pointer transition-transform duration-200 ease-in-out z-10 peer" id="timer_mode" name="timer_mode" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-container-highest cursor-pointer border border-white/10 transition-colors duration-200 ease-in-out" for="timer_mode"></label>
+</div>
+</div>
+</section>
+</div>
+<!-- Primary Action Area -->
+<div class="w-full mt-xl flex flex-col items-center gap-md">
+<button class="w-full md:w-auto bg-primary text-on-primary font-headline-md text-headline-md px-2xl py-md rounded-lg shadow-[inset_0_2px_0_rgba(255,255,255,0.4),0_10px_30px_rgba(255,255,255,0.1)] hover:opacity-90 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-sm group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform duration-300">add_circle</span>
+                Initialize Room
+            </button>
+<p class="font-label-md text-label-md text-outline-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">lock</span> End-to-end encrypted session
+            </p>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-white/5 w-full py-xl px-lg flex flex-col md:flex-row justify-between items-center gap-lg max-w-container-max mx-auto mt-auto">
+<div class="font-display text-headline-md text-on-surface flex items-center gap-sm opacity-80 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychiatry</span>
+            MindMatch
+        </div>
+<div class="flex flex-wrap justify-center md:justify-end gap-md md:gap-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Research Documentation</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-opacity opacity-80 hover:opacity-100" href="#">Contact Support</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant opacity-80 w-full md:w-auto text-center md:text-left mt-md md:mt-0">
+            © 2024 MindMatch. Psychological precision in every connection.
+        </div>
+</footer>
+</body></html>
