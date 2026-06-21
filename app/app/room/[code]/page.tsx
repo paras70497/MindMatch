@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { connectSocket, disconnectSocket } from '@/lib/socket';
 import { Suspense } from 'react';
@@ -23,13 +23,24 @@ function WaitingRoomContent({ code }: { code: string }) {
   const [connected, setConnected] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const setupSocket = useCallback(() => {
+  const roomIdRef = useRef(roomId);
+  useEffect(() => {
+    roomIdRef.current = roomId;
+  }, [roomId]);
+
+  useEffect(() => {
     const socket = connectSocket();
 
-    socket.on('connect', () => {
+    const onConnect = () => {
       setConnected(true);
       socket.emit('join_room', { code, nickname });
-    });
+    };
+
+    if (socket.connected) {
+      onConnect();
+    }
+
+    socket.on('connect', onConnect);
 
     socket.on('room_state', (room: { _id: string; players: Player[] }) => {
       setRoomId(room._id);
@@ -45,9 +56,8 @@ function WaitingRoomContent({ code }: { code: string }) {
     });
 
     socket.on('game_started', ({ question, index, total }: { question: unknown; index: number; total: number }) => {
-      // Store question data and navigate to game
       sessionStorage.setItem('mm_first_question', JSON.stringify({ question, index, total }));
-      router.push(`/game/${roomId}?nickname=${encodeURIComponent(nickname)}`);
+      router.push(`/game/${roomIdRef.current}?nickname=${encodeURIComponent(nickname)}`);
     });
 
     socket.on('player_disconnected', ({ nickname: dcNickname }: { nickname: string }) => {
@@ -58,13 +68,8 @@ function WaitingRoomContent({ code }: { code: string }) {
       setError(message);
     });
 
-    return socket;
-  }, [code, nickname, roomId, router]);
-
-  useEffect(() => {
-    const socket = setupSocket();
     return () => {
-      socket.off('connect');
+      socket.off('connect', onConnect);
       socket.off('room_state');
       socket.off('player_joined');
       socket.off('player_ready_update');
@@ -72,7 +77,7 @@ function WaitingRoomContent({ code }: { code: string }) {
       socket.off('player_disconnected');
       socket.off('error');
     };
-  }, [setupSocket]);
+  }, [code, nickname, router]);
 
   const handleReady = () => {
     if (!roomId) return;
