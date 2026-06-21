@@ -10,7 +10,13 @@ export async function GET(
     await connectDB();
     const { roomId } = await params;
     
-    const result = await Result.findOne({ roomId });
+    // The parameter might be the Result _id or the Room roomId
+    const result = await Result.findOne({
+      $or: [
+        { _id: roomId.length === 24 ? roomId : null },
+        { roomId }
+      ]
+    });
     
     if (!result) {
       return NextResponse.json({ error: 'Results not found' }, { status: 404 });
