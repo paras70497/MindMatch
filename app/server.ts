@@ -191,26 +191,32 @@ app.prepare().then(async () => {
           { upsert: true, new: true }
         );
 
-        // Track how many players answered this question
-        const answeredKey = questionId;
-        const answeredCountObj = room.answeredCount as Record<string, number>;
-        const currentCount = answeredCountObj[answeredKey] || 0;
-        answeredCountObj[answeredKey] = currentCount + 1;
-        room.markModified('answeredCount');
-        await room.save();
+        // Calculate how many users have fully answered
+        const answers = await Answer.find({ roomId, questionId });
+        let fullyAnsweredCount = 0;
 
+        for (const ans of answers) {
+          if (ans.answer !== undefined && ans.answer !== null) {
+            if (room.config.predictionMode && question.isPrediction) {
+              if (ans.prediction !== undefined && ans.prediction !== null) {
+                fullyAnsweredCount++;
+              }
+            } else {
+              fullyAnsweredCount++;
+            }
+          }
+        }
+        
         socket.emit('answer_received', { questionId });
 
-        const answeredTotal = answeredCountObj[answeredKey] || 0;
-        
-        if (answeredTotal === 1) {
+        if (fullyAnsweredCount === 1) {
           // Notify the answerer that we're waiting for their partner
           socket.emit('waiting_for_partner');
           // Notify the other player
           socket.to(roomId).emit('partner_answered');
         }
 
-        if (answeredTotal >= 2) {
+        if (fullyAnsweredCount >= 2) {
           // Clear timer for this question
           clearQuestionTimer(roomId);
 

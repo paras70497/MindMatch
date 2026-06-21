@@ -64,11 +64,7 @@ function GameContent({ roomId }: { roomId: string }) {
     });
 
     socket.on('waiting_for_partner', () => {
-      if (predictionMode && question?.isPrediction) {
-        setPhase('predicting');
-      } else {
-        setPhase('waiting');
-      }
+      setPhase('waiting');
     });
 
     socket.on('partner_answered', () => {
@@ -87,7 +83,6 @@ function GameContent({ roomId }: { roomId: string }) {
       router.push(`/results/${resultId}`);
     });
 
-    // Check if prediction mode is on
     const roomCode = localStorage.getItem('mm_roomCode') || '';
     if (roomCode) {
       fetch(`/api/rooms/${roomCode}`).then(r => r.json()).then(data => {
@@ -121,6 +116,12 @@ function GameContent({ roomId }: { roomId: string }) {
       answer,
       prediction: null,
     });
+
+    if (predictionMode && question.isPrediction) {
+      setPhase('predicting');
+    } else {
+      setPhase('waiting');
+    }
   };
 
   const submitPrediction = (prediction: string | number) => {
